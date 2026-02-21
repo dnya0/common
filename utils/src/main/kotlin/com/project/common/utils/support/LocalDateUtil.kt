@@ -22,7 +22,7 @@ private fun nowInstant(): Instant = Instant.now()
  * - 기준 타임존: Asia/Seoul
  * - nowInstant()를 기준으로 계산하여 시간 불일치 방지
  */
-fun getToday(): LocalDate = nowInstant().atZone(zone).toLocalDate()
+fun getToday(z: ZoneId = zone): LocalDate = nowInstant().atZone(z).toLocalDate()
 
 /**
  * 현재 시각을 Unix Timestamp(ms)로 반환한다.
@@ -38,10 +38,10 @@ fun nowEpochMillis(): Long = nowInstant().toEpochMilli()
  * - 단일 시점을 기준으로 date와 timestamp를 계산하여 불일치 방지
  * - 자정 근처에서 발생할 수 있는 날짜/시간 불일치 문제 해결
  */
-fun getCurrentDateTime(): CurrentDateTime {
+fun getCurrentDateTime(z: ZoneId = zone): CurrentDateTime {
     val instant = nowInstant()
     return CurrentDateTime(
-        date = instant.atZone(zone).toLocalDate(),
+        date = instant.atZone(z).toLocalDate(),
         timestamp = instant.toEpochMilli()
     )
 }
@@ -58,7 +58,10 @@ data class CurrentDateTime(
  * - 기준 타임존: zone (예: Asia/Seoul)
  * - 반환 값: UTC 기준 Epoch Milliseconds
  */
-fun LocalDate.startEpochMillis(): Long = this.atStartOfDay(zone).toInstant().toEpochMilli()
+fun LocalDate.startEpochMillis(z: ZoneId = zone): Long = this
+    .atStartOfDay(z)
+    .toInstant()
+    .toEpochMilli()
 
 /**
  * 해당 날짜의 다음 날 시작 시각(익일 00:00:00)을
@@ -68,7 +71,11 @@ fun LocalDate.startEpochMillis(): Long = this.atStartOfDay(zone).toInstant().toE
  * - 기준 타임존: zone (예: Asia/Seoul)
  * - 반환 값: UTC 기준 Epoch Milliseconds
  */
-fun LocalDate.endEpochMillis(): Long = this.plusDays(1).atStartOfDay(zone).toInstant().toEpochMilli()
+fun LocalDate.endEpochMillis(z: ZoneId = zone): Long = this
+    .plusDays(1)
+    .atStartOfDay(z)
+    .toInstant()
+    .toEpochMilli()
 
 /**
  * 특정 날짜의 하루 전체 범위를 UTC 타임스탬프로 반환한다.
