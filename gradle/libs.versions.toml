@@ -20,8 +20,11 @@ slf4j-api = { module = "org.slf4j:slf4j-api", version = "2.0.16" }
 spring-context = { module = "org.springframework:spring-context", version.ref = "springFramework" }
 spring-tx = { module = "org.springframework:spring-tx", version.ref = "springFramework" }
 spring-aop = { module = "org.springframework:spring-aop", version.ref = "springFramework" }
+spring-web = { module = "org.springframework:spring-web", version.ref = "springFramework" }
 aspectjweaver = { module = "org.aspectj:aspectjweaver", version = "1.9.22" }
 jakarta-servlet = { module = "jakarta.servlet:jakarta.servlet-api", version = "6.1.0" }
+jakarta-persistence = { module = "jakarta.persistence:jakarta.persistence-api", version = "3.1.0" }
+hibernate-core = { module = "org.hibernate.orm:hibernate-core", version = "6.6.4.Final" }
 spring-data-jpa = { module = "org.springframework.data:spring-data-jpa", version = "3.4.0" }
 spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "springBoot" }
 spring-boot-test = { module = "org.springframework.boot:spring-boot-test", version.ref = "springBoot" }
