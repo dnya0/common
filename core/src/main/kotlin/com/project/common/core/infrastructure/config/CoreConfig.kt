@@ -1,4 +1,4 @@
-package com.project.common.core.config
+package com.project.common.core.infrastructure.config
 
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing

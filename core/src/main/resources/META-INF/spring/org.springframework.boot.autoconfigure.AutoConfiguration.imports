@@ -1,2 +1,2 @@
-com.project.common.core.config.CoreConfig
-com.project.common.core.transaction.config.TransactionConfig
+com.project.common.core.infrastructure.config.CoreConfig
+com.project.common.core.support.transaction.config.TransactionConfig

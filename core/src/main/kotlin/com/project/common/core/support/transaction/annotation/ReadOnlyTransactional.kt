@@ -1,4 +1,4 @@
-package com.project.common.core.transaction.annotation
+package com.project.common.core.support.transaction.annotation
 
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional

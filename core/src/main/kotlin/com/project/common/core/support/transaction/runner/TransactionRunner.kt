@@ -1,6 +1,6 @@
-package com.project.common.core.transaction.runner
+package com.project.common.core.support.transaction.runner
 
-import com.project.common.core.transaction.annotation.ReadOnlyTransactional
+import com.project.common.core.support.transaction.annotation.ReadOnlyTransactional
 import org.springframework.transaction.annotation.Transactional
 
 open class TransactionRunner {
