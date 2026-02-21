@@ -1,9 +1,8 @@
-package com.project.common.core.infrastructure.config
+package com.project.common.core.infrastructure.jpa.config
 
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
-import org.springframework.scheduling.annotation.EnableAsync
 
 @AutoConfiguration
-@EnableAsync
-class CoreConfig
+@EnableJpaAuditing
+class CommonJpaConfig
