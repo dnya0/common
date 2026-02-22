@@ -32,6 +32,8 @@ abstract class BaseVersionedEntity protected constructor(
     var updatedAt: Instant? = null
 ) : Domain<Long>(id) {
 
+    override val value: Long? get() = id
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null) return false

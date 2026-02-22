@@ -29,8 +29,7 @@ abstract class BaseStringEntity protected constructor(
     var updatedAt: Instant? = null
 ) : Domain<String>(id), Persistable<String> {
 
-    override val value: String?
-        get() = id
+    override val value: String? get() = id
 
     @Transient
     private var _isNew = true
