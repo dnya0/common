@@ -1,9 +1,9 @@
 # Common Library 🚀
 
-
 [![](https://jitpack.io/v/dnya0/common.svg)](https://jitpack.io/#dnya0/common)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.9-brightgreen)
-![Java](https://img.shields.io/badge/Java-17-blue)
+![Kotlin](https://img.shields.io/badge/Kotlin-2.3.0-7F52FF)
+![JVM](https://img.shields.io/badge/jvm-17-blue)
 
 Spring Boot 애플리케이션 개발을 위한 공통 라이브러리입니다.
 반복적인 보일러플레이트 코드를 줄이고, 일관된 아키텍처 패턴을 제공합니다.
@@ -40,14 +40,11 @@ repositories {
 }
 
 dependencies {
-    // 전체 모듈 사용
-    implementation("com.github.dnya0:common:v0.1.3")
-    
     // 또는 필요한 모듈만 선택적으로 사용
-    implementation("com.github.dnya0:common:core:v0.1.3")      // JPA 엔티티, 도메인 이벤트
-    implementation("com.github.dnya0:common:redis:v0.1.3")     // Redis 캐시, 분산 락
-    implementation("com.github.dnya0:common:core-aop:v0.1.3")  // AOP 로깅
-    implementation("com.github.dnya0:common:utils:v0.1.3")     // 유틸리티 함수
+    implementation("com.github.dnya0.common:core:${version}")      // JPA 엔티티, 도메인 이벤트
+    implementation("com.github.dnya0.common:redis:${version}")     // Redis 캐시, 분산 락
+    implementation("com.github.dnya0.common:core-aop:${version}")  // AOP 로깅
+    implementation("com.github.dnya0.common:utils:${version}")     // 유틸리티 함수
 }
 ```
 
