@@ -100,8 +100,8 @@ common/
 
 ### 요구사항
 - **JDK**: 17 이상
-- **Kotlin**: 2.2.0
-- **Spring Boot**: 3.x
+- **Kotlin**: 2.3.0
+- **Spring Boot**: 3.5.x
 - **Gradle**: 9.0.0
 
 ### 빌드 및 테스트
@@ -118,19 +118,3 @@ common/
 # 빌드 결과물 정리
 ./gradlew clean
 ```
-
-## 📄 라이선스
-
-MIT License
-
-## 🤝 기여하기
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📞 문의
-
-문제나 제안사항이 있으시면 [Issues](https://github.com/dnya0/common/issues)를 통해 알려주세요.
