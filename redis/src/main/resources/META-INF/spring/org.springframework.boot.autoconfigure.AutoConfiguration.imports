@@ -1,0 +1,3 @@
+com.project.common.redis.config.CommonRedisConfig
+com.project.common.redis.cache.config.CacheConfig
+com.project.common.redis.lock.config.LockConfig

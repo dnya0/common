@@ -27,7 +27,7 @@ jakarta-persistence = { module = "jakarta.persistence:jakarta.persistence-api", 
 hibernate-core = { module = "org.hibernate.orm:hibernate-core", version = "6.6.4.Final" }
 spring-data-jpa = { module = "org.springframework.data:spring-data-jpa", version = "3.4.0" }
 spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "springBoot" }
-spring-boot-test = { module = "org.springframework.boot:spring-boot-test", version.ref = "springBoot" }
+spring-boot-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis", version.ref = "springBoot" }
 
 # Libraries can be bundled together for easier import
 [bundles]

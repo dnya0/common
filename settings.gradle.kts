@@ -15,3 +15,4 @@ rootProject.name = "common"
 include("utils")
 include("core")
 include("core-aop")
+include("redis")
