@@ -1,6 +1,5 @@
 package com.project.common.redis.config
 
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean
@@ -19,10 +18,9 @@ class CommonRedisConfig {
         return LettuceConnectionFactory()
     }
 
-    @Bean
-    @Qualifier(value = "defaultStringRedisTemplate")
+    @Bean("defaultStringRedisTemplate")
     @ConditionalOnMissingBean(name = ["defaultStringRedisTemplate"])
-    fun stringRedisTemplate(
+    fun defaultStringRedisTemplate(
         redisConnectionFactory: RedisConnectionFactory
     ): RedisTemplate<String, String> = RedisTemplate<String, String>().apply {
         connectionFactory = redisConnectionFactory
@@ -31,10 +29,9 @@ class CommonRedisConfig {
         afterPropertiesSet()
     }
 
-    @Bean
-    @Qualifier(value = "anyValueRedisTemplate")
+    @Bean("anyValueRedisTemplate")
     @ConditionalOnMissingBean(name = ["anyValueRedisTemplate"])
-    fun anyRedisTemplate(
+    fun anyValueRedisTemplate(
         redisConnectionFactory: RedisConnectionFactory
     ): RedisTemplate<String, Any> = RedisTemplate<String, Any>().apply {
         connectionFactory = redisConnectionFactory
