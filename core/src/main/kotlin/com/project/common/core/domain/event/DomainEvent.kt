@@ -1,6 +1,6 @@
 package com.project.common.core.domain.event
 
-import kotlin.time.Instant
+import java.time.Instant
 
 interface DomainEvent {
     val occurredAt: Instant
