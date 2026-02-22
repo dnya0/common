@@ -5,13 +5,10 @@ import jakarta.persistence.Column
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.MappedSuperclass
-import jakarta.persistence.PostLoad
-import jakarta.persistence.PostPersist
 import jakarta.persistence.Version
 import org.hibernate.Hibernate
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.domain.Persistable
 import java.time.Instant
 
 @MappedSuperclass
@@ -20,7 +17,7 @@ abstract class BaseVersionedEntity protected constructor(
     @Id
     @GeneratedValue
     @Column(name = "id", updatable = false, unique = true, nullable = false)
-    private var id: Long? = null,
+    var id: Long? = null,
 
     @Version
     @Column(name = "version", updatable = false, nullable = false)
@@ -33,23 +30,7 @@ abstract class BaseVersionedEntity protected constructor(
     @LastModifiedDate
     @Column(name = "updated_at", updatable = true)
     var updatedAt: Instant? = null
-) : Domain<Long>(id), Persistable<Long> {
-
-    override val value: Long?
-        get() = id
-
-    @Transient
-    private var _isNew = true
-
-    @PostPersist
-    @PostLoad
-    protected fun load() {
-        _isNew = false
-    }
-
-    override fun getId(): Long = id ?: throw IllegalStateException("Entity not persisted yet")
-
-    override fun isNew(): Boolean = _isNew
+) : Domain<Long>(id) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

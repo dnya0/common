@@ -29,7 +29,7 @@ interface AggregateRoot {
     fun domainEvents(): List<DomainEvent>
 
     /**
-     * 현재 AggregateRoot가 가지고 있는 모든 도메인 이벤트 조회
+     * 현재 AggregateRoot가 가지고 있는 모든 도메인 이벤트 조회 및 초기화
      */
     fun pullDomainEvents(): List<DomainEvent>
 

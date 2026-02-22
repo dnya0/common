@@ -2,3 +2,4 @@ com.project.common.core.infrastructure.config.CoreConfig
 com.project.common.core.support.transaction.config.TransactionConfig
 com.project.common.core.presentation.config.PageableConfig
 com.project.common.core.infrastructure.jpa.config.CommonJpaConfig
+com.project.common.core.infrastructure.messaging.config.DomainEventConfig
