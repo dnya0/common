@@ -1,56 +1,139 @@
-# common
+# Common Library 🚀
 
-Common library for Spring Boot applications providing:
 
-- **BaseEntity classes** for JPA entities with audit fields
-- **Domain event system** with AggregateRoot support
-- **Redis cache and distributed lock** utilities
-- **AOP logging** functionality
-- **Exception handling** utilities
+[![](https://jitpack.io/v/dnya0/common.svg)](https://jitpack.io/#dnya0/common)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.9-brightgreen)
+![Java](https://img.shields.io/badge/Java-17-blue)
 
-## Installation
+Spring Boot 애플리케이션 개발을 위한 공통 라이브러리입니다.
+반복적인 보일러플레이트 코드를 줄이고, 일관된 아키텍처 패턴을 제공합니다.
 
-Add GitHub Packages repository to your `build.gradle.kts`:
+## ✨ 주요 기능
+
+### 🗄️ Core 모듈
+- **BaseEntity 클래스**: JPA 엔티티용 공통 베이스 클래스 (ID, 생성일시, 수정일시)
+- **도메인 이벤트 시스템**: AggregateRoot와 DomainEvent를 통한 이벤트 기반 아키텍처
+- **Domain 추상화**: 도메인 모델의 기본 구조 제공
+
+### 🔴 Redis 모듈  
+- **캐시 유틸리티**: Redis 기반 캐싱 지원
+- **분산 락**: Redis를 활용한 분산 환경 동기화
+- **세션 관리**: Redis 기반 세션 스토리지
+
+### 📊 AOP 모듈
+- **로깅 AOP**: 메서드 실행 시간, 파라미터, 결과 자동 로깅
+- **트랜잭션 관리**: 커스텀 트랜잭션 처리
+- **예외 처리**: 전역 예외 핸들링
+
+### 🛠️ Utils 모듈
+- **API Response**: 표준화된 REST API 응답 형식
+- **페이징 지원**: 페이지네이션을 위한 유틸리티
+- **예외 클래스**: 공통 예외 처리 클래스들
+
+## 📦 설치 방법
+
+`build.gradle.kts`에 다음을 추가하세요:
 
 ```kotlin
 repositories {
-    maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/dnya0/common")
-        credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-            password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
-        }
-    }
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
-    implementation("com.github.dnya0:core:0.1.1")
-    implementation("com.github.dnya0:redis:0.1.1")
-    implementation("com.github.dnya0:core-aop:0.1.1")
+    // 전체 모듈 사용
+    implementation("com.github.dnya0:common:v0.1.3")
+    
+    // 또는 필요한 모듈만 선택적으로 사용
+    implementation("com.github.dnya0:common:core:v0.1.3")      // JPA 엔티티, 도메인 이벤트
+    implementation("com.github.dnya0:common:redis:v0.1.3")     // Redis 캐시, 분산 락
+    implementation("com.github.dnya0:common:core-aop:v0.1.3")  // AOP 로깅
+    implementation("com.github.dnya0:common:utils:v0.1.3")     // 유틸리티 함수
 }
 ```
 
-## Development
+## 🎯 사용 예시
 
-This project uses [Gradle](https://gradle.org/).
-To build and run the application, use the *Gradle* tool window by clicking the Gradle icon in the right-hand toolbar,
-or run it directly from the terminal:
+### BaseEntity 사용
+```kotlin
+@Entity
+class User : BaseEntity() {
+    var name: String = ""
+    var email: String = ""
+}
+```
 
-* Run `./gradlew run` to build and run the application.
-* Run `./gradlew build` to only build the application.
-* Run `./gradlew check` to run all checks, including tests.
-* Run `./gradlew clean` to clean all build outputs.
+### 도메인 이벤트 사용
+```kotlin
+class Order : 
+    BaseEntity(),
+    AggregateRoot by DomainEventDelegate() {
+    
+    fun completeOrder() {
+        // 비즈니스 로직
+        registerEvent(OrderCompletedEvent(this.id!!))
+    }
+}
+```
 
-Note the usage of the Gradle Wrapper (`./gradlew`).
-This is the suggested way to use Gradle in production projects.
+### AOP 로깅 사용
+```kotlin
+@Service
+class UserService {
+    
+    @Loggable
+    fun createUser(request: CreateUserRequest): User {
+        // 메서드 실행 시간과 파라미터가 자동으로 로깅됩니다
+        return userRepository.save(User(...))
+    }
+}
+```
 
-[Learn more about the Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html).
+## 🏗️ 아키텍처
 
-[Learn more about Gradle tasks](https://docs.gradle.org/current/userguide/command_line_interface.html#common_tasks).
+```
+common/
+├── core/           # 핵심 도메인 모델 및 이벤트
+├── core-aop/       # AOP 기반 횡단 관심사
+├── redis/          # Redis 연동 유틸리티  
+├── utils/          # 공통 유틸리티
+└── buildSrc/       # Gradle 빌드 로직
+```
 
-This project follows the suggested multi-module setup and consists of the `app` and `utils` subprojects.
-The shared build logic was extracted to a convention plugin located in `buildSrc`.
+## 🛠️ 개발 환경
 
-This project uses a version catalog (see `gradle/libs.versions.toml`) to declare and version dependencies
-and both a build cache and a configuration cache (see `gradle.properties`).
+### 요구사항
+- **JDK**: 17 이상
+- **Kotlin**: 2.2.0
+- **Spring Boot**: 3.x
+- **Gradle**: 9.0.0
+
+### 빌드 및 테스트
+```bash
+# 프로젝트 빌드
+./gradlew build
+
+# 테스트 실행
+./gradlew check
+
+# 로컬 Maven 저장소에 배포
+./gradlew publishToMavenLocal
+
+# 빌드 결과물 정리
+./gradlew clean
+```
+
+## 📄 라이선스
+
+MIT License
+
+## 🤝 기여하기
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📞 문의
+
+문제나 제안사항이 있으시면 [Issues](https://github.com/dnya0/common/issues)를 통해 알려주세요.
