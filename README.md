@@ -1,8 +1,8 @@
 # Common Library 🚀
 
-[![](https://jitpack.io/v/dnya0/common.svg)](https://jitpack.io/#dnya0/common)
+![jitpack](https://img.shields.io/badge/jitpack-v0.1.4--k1.9-brightgreen)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.9-brightgreen)
-![Kotlin](https://img.shields.io/badge/Kotlin-2.3.0-7F52FF)
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9.25-7F52FF)
 ![JVM](https://img.shields.io/badge/jvm-17-blue)
 
 Spring Boot 애플리케이션 개발을 위한 공통 라이브러리입니다.
