@@ -1,6 +1,0 @@
-jdk:
-  - openjdk17
-before_install:
-  - echo "JitPack build starting with JDK 17"
-install:
-  - ./gradlew publishToMavenLocal

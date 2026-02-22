@@ -1,5 +1,38 @@
 # common
 
+Common library for Spring Boot applications providing:
+
+- **BaseEntity classes** for JPA entities with audit fields
+- **Domain event system** with AggregateRoot support
+- **Redis cache and distributed lock** utilities
+- **AOP logging** functionality
+- **Exception handling** utilities
+
+## Installation
+
+Add GitHub Packages repository to your `build.gradle.kts`:
+
+```kotlin
+repositories {
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/dnya0/common")
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation("com.github.dnya0:core:0.1.1")
+    implementation("com.github.dnya0:redis:0.1.1")
+    implementation("com.github.dnya0:core-aop:0.1.1")
+}
+```
+
+## Development
+
 This project uses [Gradle](https://gradle.org/).
 To build and run the application, use the *Gradle* tool window by clicking the Gradle icon in the right-hand toolbar,
 or run it directly from the terminal:
