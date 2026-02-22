@@ -12,7 +12,7 @@ import org.hibernate.Hibernate
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.domain.Persistable
-import kotlin.time.Instant
+import java.time.Instant
 
 @MappedSuperclass
 abstract class BaseVersionedStringEntity protected constructor(
@@ -20,7 +20,7 @@ abstract class BaseVersionedStringEntity protected constructor(
     @Id
     @GeneratedValue
     @Column(name = "id", updatable = false, unique = true, nullable = false)
-    override var id: String? = null,
+    private var id: String? = null,
 
     @Version
     @Column(name = "version", updatable = false, nullable = false)
@@ -34,6 +34,9 @@ abstract class BaseVersionedStringEntity protected constructor(
     @Column(name = "updated_at", updatable = true)
     var updatedAt: Instant? = null
 ) : Domain<String>(id), Persistable<String> {
+
+    override val value: String?
+        get() = id
 
     @Transient
     private var _isNew = true
