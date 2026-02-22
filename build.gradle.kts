@@ -1,5 +1,5 @@
 allprojects {
-    group = "io.github.dnya0"
+    group = "com.github.dnya0"
     version = project.findProperty("version") as String? ?: "0.1.2"
 
     repositories {

@@ -14,11 +14,11 @@ import org.springframework.transaction.TransactionManager
 class TransactionConfig {
 
     @Bean("txInitBean")
-    @ConditionalOnMissingBean
+    @ConditionalOnMissingBean(name = ["txInitBean"])
     fun txInitialize(txRunner: TransactionRunner): InitializingBean =
         InitializingBean { Tx.initialize(txRunner) }
 
     @Bean
-    @ConditionalOnMissingBean
+    @ConditionalOnMissingBean(TransactionRunner::class)
     fun transactionalRunner(): TransactionRunner = TransactionRunner()
 }
