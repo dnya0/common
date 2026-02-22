@@ -1,5 +1,6 @@
 package com.project.common.redis.lock.config
 
+import com.project.common.redis.config.CommonRedisConfig
 import com.project.common.redis.lock.strategy.LettuceLockStrategy
 import com.project.common.redis.lock.strategy.LockStrategy
 import com.project.common.redis.lock.strategy.NoOpLockStrategy
@@ -11,7 +12,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.data.redis.core.RedisTemplate
 
-@AutoConfiguration
+@AutoConfiguration(after = [CommonRedisConfig::class])
 @EnableConfigurationProperties(LockProperties::class)
 @ConditionalOnBean(name = ["defaultStringRedisTemplate"])
 class LockConfig {
