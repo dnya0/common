@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    api(project(":utils"))
     api(libs.spring.context)
     api(libs.spring.tx)
     api(kotlin("reflect"))
@@ -14,6 +15,5 @@ dependencies {
     compileOnly(libs.spring.data.jpa)
     compileOnly(libs.spring.web)
     implementation(libs.spring.boot.autoconfigure)
-    implementation(project(":utils"))
     testImplementation(kotlin("test"))
 }

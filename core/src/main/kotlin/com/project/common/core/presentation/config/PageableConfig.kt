@@ -13,7 +13,7 @@ class PageableConfig(
 ) {
 
     @Bean
-    @ConditionalOnMissingBean
+    @ConditionalOnMissingBean(PageableHandlerMethodArgumentResolverCustomizer::class)
     fun pageableCustomizer(): PageableHandlerMethodArgumentResolverCustomizer =
         PageableHandlerMethodArgumentResolverCustomizer { resolver ->
             resolver.setOneIndexedParameters(props.oneIndexed)
