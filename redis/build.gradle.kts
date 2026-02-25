@@ -5,9 +5,9 @@ plugins {
 }
 
 dependencies {
-    api(libs.spring.context)
-    api(libs.spring.boot.starter.data.redis)
-    api(kotlin("reflect"))
+    implementation(libs.spring.context)
+    implementation(libs.spring.boot.starter.data.redis)
+    implementation(kotlin("reflect"))
     compileOnly(libs.spring.web)
     implementation(libs.spring.boot.autoconfigure)
     implementation(project(":utils"))

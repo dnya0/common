@@ -6,10 +6,9 @@ plugins {
 }
 
 dependencies {
-    api(project(":utils"))
-    api(libs.spring.context)
-    api(libs.spring.tx)
-    api(kotlin("reflect"))
+    implementation(project(":utils"))
+    implementation(libs.spring.context)
+    implementation(libs.spring.tx)
     compileOnly(libs.jakarta.servlet)
     compileOnly(libs.jakarta.persistence)
     compileOnly(libs.hibernate.core)

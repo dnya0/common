@@ -2,6 +2,7 @@ package com.project.common.core.domain.event
 
 import com.project.common.core.domain.model.AggregateRoot
 import kotlin.reflect.KClass
+import kotlin.reflect.cast
 
 open class DomainEventDelegate : AggregateRoot {
 
@@ -16,8 +17,8 @@ open class DomainEventDelegate : AggregateRoot {
     override fun pullDomainEvents(): List<DomainEvent> = _events.toList().also { _events.clear() }
 
     override fun <T : DomainEvent> pullEventsOfType(clazz: KClass<T>): List<T> {
-        val filtered = _events.filter { clazz.isInstance(it) }.map { it as T }
-        _events.removeAll(filtered)
+        val filtered = _events.filter { clazz.isInstance(it) }.map { clazz.cast(it) }
+        _events.removeAll(filtered.toSet())
         return filtered
     }
 

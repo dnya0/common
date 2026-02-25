@@ -5,9 +5,11 @@ plugins {
 }
 
 dependencies {
-    api(libs.spring.aop)
-    api(libs.aspectjweaver)
+    implementation(libs.spring.aop)
+    implementation(libs.aspectjweaver)
+    implementation(libs.slf4j.api)
     implementation(libs.spring.boot.autoconfigure)
+    implementation(kotlin("reflect"))
     compileOnly(libs.jakarta.servlet)
     implementation(project(":core"))
     implementation(project(":utils"))
