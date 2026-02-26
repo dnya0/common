@@ -1,6 +1,6 @@
 # Common Library 🚀
 
-![jitpack](https://img.shields.io/badge/jitpack-v0.1.4--k1.9-brightgreen)
+![jitpack](https://img.shields.io/badge/jitpack-v1.1.0--k1.9-brightgreen)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.9-brightgreen)
 ![Kotlin](https://img.shields.io/badge/Kotlin-1.9.25-7F52FF)
 ![JVM](https://img.shields.io/badge/jvm-17-blue)
