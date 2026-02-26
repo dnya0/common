@@ -22,7 +22,7 @@ data class OffsetPageInfo(
     val totalElements: Long
 )
 
-fun Page<*>.toPageInfo(oneIndexed: Boolean): OffsetPageInfo = OffsetPageInfo(
+fun Page<*>.toOffsetPageInfo(oneIndexed: Boolean = true): OffsetPageInfo = OffsetPageInfo(
     currentPage = number + if (oneIndexed) 1 else 0,
     size = size,
     totalPages = totalPages,
