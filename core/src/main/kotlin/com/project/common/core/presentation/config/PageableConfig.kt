@@ -1,5 +1,6 @@
 package com.project.common.core.presentation.config
 
+import com.project.common.core.support.pagination.offset.OffsetPageInfoSupport
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -19,4 +20,8 @@ class PageableConfig(
             resolver.setOneIndexedParameters(props.oneIndexed)
             resolver.setMaxPageSize(props.maxPageSize)
         }
+
+    @Bean
+    @ConditionalOnMissingBean(OffsetPageInfoSupport::class)
+    fun pageInfoSupport(props: PageableProperties): OffsetPageInfoSupport = OffsetPageInfoSupport(props)
 }

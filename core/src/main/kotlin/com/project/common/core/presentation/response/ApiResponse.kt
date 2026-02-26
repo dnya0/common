@@ -1,4 +1,4 @@
-package com.project.common.core.presentation
+package com.project.common.core.presentation.response
 
 import com.project.common.core.domain.exception.ErrorCode
 import com.project.common.core.domain.exception.resolveMessage

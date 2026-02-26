@@ -11,6 +11,7 @@ dependencies {
     implementation(libs.spring.tx)
     compileOnly(libs.jakarta.servlet)
     compileOnly(libs.jakarta.persistence)
+    compileOnly(libs.jakarta.validation)
     compileOnly(libs.hibernate.core)
     compileOnly(libs.spring.data.jpa)
     compileOnly(libs.spring.web)

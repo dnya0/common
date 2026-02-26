@@ -1,10 +1,10 @@
-package com.project.common.core.domain.exception.handler
+package com.project.common.core.presentation.exception
 
 import com.project.common.core.domain.exception.CommonErrorCode
 import com.project.common.core.domain.exception.DomainException
 import com.project.common.core.domain.exception.ErrorCode
-import com.project.common.core.presentation.ApiResponse
-import com.project.common.core.presentation.errorOf
+import com.project.common.core.presentation.response.ApiResponse
+import com.project.common.core.presentation.response.errorOf
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
