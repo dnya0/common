@@ -9,5 +9,5 @@ abstract class BaseVersionedEntity protected constructor(
 
     @Version
     @Column(name = "version", updatable = false, nullable = false)
-    var version: Long? = null,
+    var version: Long? = null
 ) : BaseEntity()
