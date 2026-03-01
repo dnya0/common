@@ -1,16 +1,11 @@
-package com.project.common.core.infrastructure.messaging.publisher
+package com.project.common.core.application.port.out
 
 import com.project.common.core.domain.event.DomainEvent
 import com.project.common.core.domain.model.AggregateRoot
-import org.springframework.context.ApplicationEventPublisher
 
-class DomainEventPublisher(
-    private val publisher: ApplicationEventPublisher
-) {
+interface DomainEventPublisher {
 
-    fun <T : DomainEvent> publish(event: T) {
-        publisher.publishEvent(event)
-    }
+    fun <T : DomainEvent> publish(event: T)
 
     fun <T : DomainEvent> publishAll(events: List<T>) {
         events.forEach { publish(it) }
@@ -23,5 +18,4 @@ class DomainEventPublisher(
     fun publishAndClearAll(aggregateRoots: Collection<AggregateRoot>) {
         aggregateRoots.forEach { publishAndClear(it) }
     }
-
 }
