@@ -22,11 +22,3 @@ class LoggerDelegate<in T : Any>(private val clazz: Class<T>) {
 
     operator fun getValue(thisRef: T, property: KProperty<*>): Logger = logger
 }
-
-class FileLoggerDelegate(private val clazz: Class<*>) {
-    private val logger by lazy { LoggerFactory.getLogger(clazz) }
-
-    operator fun getValue(thisRef: Any?, property: KProperty<*>): Logger = logger
-}
-
-
