@@ -1,4 +1,4 @@
-package com.project.common.core.presentation.config
+package com.project.webmvc.presentation.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

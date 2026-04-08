@@ -1,8 +1,8 @@
-package com.project.common.core.support.pagination.offset
+package com.project.webmvc.support.offset
 
-import com.project.common.core.presentation.config.PageableProperties
 import com.project.common.core.presentation.response.OffsetPageInfo
 import com.project.common.core.presentation.response.toOffsetPageInfo
+import com.project.webmvc.presentation.config.PageableProperties
 import org.springframework.data.domain.Page
 
 class OffsetPageInfoSupport(

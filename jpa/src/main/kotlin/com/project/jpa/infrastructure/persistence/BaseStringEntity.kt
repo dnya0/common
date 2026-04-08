@@ -1,25 +1,27 @@
-package com.project.common.core.infrastructure.jpa
+package com.project.jpa.infrastructure.persistence
 
 import com.project.common.core.domain.model.Domain
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
-import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.MappedSuperclass
+import jakarta.persistence.PostLoad
+import jakarta.persistence.PostPersist
 import org.hibernate.Hibernate
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.domain.Persistable
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.Instant
 
+
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
-abstract class BaseEntity protected constructor(
+abstract class BaseStringEntity protected constructor(
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", updatable = false, unique = true, nullable = false)
-    var id: Long? = null,
+    @Column(name = "id", updatable = false, unique = true, nullable = false, length = 100)
+    private var id: String? = null,
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
@@ -28,9 +30,22 @@ abstract class BaseEntity protected constructor(
     @LastModifiedDate
     @Column(name = "updated_at", updatable = true)
     var updatedAt: Instant? = null
-) : Domain<Long>(id) {
+) : Domain<String>(id), Persistable<String> {
 
-    override val value: Long? get() = id
+    override val value: String? get() = id
+
+    @Transient
+    private var _isNew = true
+
+    @PostPersist
+    @PostLoad
+    protected fun load() {
+        _isNew = false
+    }
+
+    override fun getId(): String = id ?: throw IllegalStateException("Entity not persisted yet")
+
+    override fun isNew(): Boolean = _isNew
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -41,7 +56,7 @@ abstract class BaseEntity protected constructor(
 
         if (thisClass != otherClass) return false
 
-        other as BaseEntity
+        other as BaseStringEntity
 
         if (id == null || other.id == null) return false
 
@@ -53,3 +68,4 @@ abstract class BaseEntity protected constructor(
     override fun toString(): String = "${this::class.simpleName}(id=$id)"
 
 }
+

@@ -21,7 +21,7 @@ data class CursorPageInfo(
     val nextCursor: String? // 없으면 null
 )
 
-fun <T> Slice<T>.toCursorPageInfo(
+fun <T : Any> Slice<T>.toCursorPageInfo(
     nextCursorExtractor: (T) -> String?
 ): CursorPageInfo {
     val nextCursor = if (hasNext()) {
@@ -35,7 +35,7 @@ fun <T> Slice<T>.toCursorPageInfo(
     )
 }
 
-fun <T> Slice<T>.toCursorResponse(
+fun <T : Any> Slice<T>.toCursorResponse(
     nextCursorExtractor: (T) -> String?
 ): CursorApiResponse<T> = CursorApiResponse(
     data = content,

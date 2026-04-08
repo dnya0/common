@@ -1,6 +1,6 @@
-package com.project.common.core.presentation.config
+package com.project.webmvc.presentation.config
 
-import com.project.common.core.support.pagination.offset.OffsetPageInfoSupport
+import com.project.webmvc.support.offset.OffsetPageInfoSupport
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties

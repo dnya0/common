@@ -14,6 +14,9 @@ rootProject.name = "common"
 
 include("utils")
 include("core")
+include("webmvc")
+include("webflux")
+include("jpa")
 include("core-aop")
 include("redis")
 include("starter")

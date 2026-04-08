@@ -7,8 +7,12 @@ kotlin = "2.3.0"
 kotlinxDatetime = "0.7.1"
 kotlinxSerializationJSON = "1.9.0"
 kotlinxCoroutines = "1.10.2"
-springBoot = "3.5.9"
-springFramework = "6.2.16"
+springBoot = "4.0.5"
+springFramework = "7.0.6"
+springData = "4.0.4"
+hibernate = "7.2.7.Final"
+jakartaPersistence = "3.2.0"
+jakartaValidation = "3.1.1"
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -20,13 +24,16 @@ slf4j-api = { module = "org.slf4j:slf4j-api", version = "2.0.16" }
 spring-context = { module = "org.springframework:spring-context", version.ref = "springFramework" }
 spring-tx = { module = "org.springframework:spring-tx", version.ref = "springFramework" }
 spring-aop = { module = "org.springframework:spring-aop", version.ref = "springFramework" }
+spring-aspects = { module = "org.springframework:spring-aspects", version.ref = "springFramework" }
 spring-web = { module = "org.springframework:spring-web", version.ref = "springFramework" }
+spring-webflux = { module = "org.springframework:spring-webflux", version.ref = "springFramework" }
 aspectjweaver = { module = "org.aspectj:aspectjweaver", version = "1.9.22" }
 jakarta-servlet = { module = "jakarta.servlet:jakarta.servlet-api", version = "6.1.0" }
-jakarta-persistence = { module = "jakarta.persistence:jakarta.persistence-api", version = "3.1.0" }
-jakarta-validation = { module = "jakarta.validation:jakarta.validation-api", version = "3.0.2" }
-hibernate-core = { module = "org.hibernate.orm:hibernate-core", version = "6.6.4.Final" }
-spring-data-jpa = { module = "org.springframework.data:spring-data-jpa", version = "3.4.0" }
+jakarta-persistence = { module = "jakarta.persistence:jakarta.persistence-api", version.ref = "jakartaPersistence" }
+jakarta-validation = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakartaValidation" }
+hibernate-core = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate" }
+spring-data-jpa = { module = "org.springframework.data:spring-data-jpa", version.ref = "springData" }
+spring-data-commons = { module = "org.springframework.data:spring-data-commons", version.ref = "springData" }
 spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "springBoot" }
 spring-boot-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis", version.ref = "springBoot" }
 
@@ -36,3 +43,4 @@ kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutine
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinPluginJpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }

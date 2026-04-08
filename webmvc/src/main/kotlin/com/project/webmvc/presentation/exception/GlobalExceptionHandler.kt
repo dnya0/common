@@ -1,4 +1,4 @@
-package com.project.common.core.presentation.exception
+package com.project.webmvc.presentation.exception
 
 import com.project.common.core.domain.exception.CommonErrorCode
 import com.project.common.core.domain.exception.DomainException

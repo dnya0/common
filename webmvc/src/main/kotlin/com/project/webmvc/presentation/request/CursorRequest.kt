@@ -1,4 +1,4 @@
-package com.project.common.core.presentation.request
+package com.project.webmvc.presentation.request
 
 import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.Min
